@@ -3,9 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.8.1",
+    "@material-ui/icons": "^3.0.1",
+    "firebase": "^5.7.2",
+    "firebase-cli": "^1.2.0",
+    "moment": "^2.23.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2"
+    "react-lines-ellipsis": "^0.14.0",
+    "react-redux": "^6.0.0",
+    "react-scripts": "2.1.2",
+    "react-shimmer": "^1.0.2",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "shimmer": "^1.2.0",
+    "thunk": "0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

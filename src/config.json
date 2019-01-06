@@ -1,0 +1,7 @@
+{
+  "url":"https://newsapi.org/v2/top-headlines?country=in&category=",
+  "apiKey":"ee92f1e3efe94cd79d09e8e8a257c668",
+  "getByKeywordUrl":"https://newsapi.org/v2/everything?q=",
+  "defaultImageUrl":"https://images.pexels.com/photos/751079/pexels-photo-751079.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  "defaultContent":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to"
+}
