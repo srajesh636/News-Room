@@ -8,10 +8,11 @@ import { withStyles } from "@material-ui/core/styles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import FavouriteIcon from "@material-ui/icons/Favorite";
-import SearchIcon from "@material-ui/icons/Search";
+import Notifications from "@material-ui/icons/Notifications";
+import Icon from "@material-ui/icons/Search";
 import React from "react";
 import getNews from "../helpers/API";
+import {connect} from 'react-redux';
 
 const styles = theme => ({
   root: {
@@ -34,8 +35,11 @@ const styles = theme => ({
   },
   title: {
     display: "none",
+    fontFamily: 'Dancing Script',
+    fontSize:32,
     [theme.breakpoints.up("sm")]: {
-      display: "block"
+      display: "block",
+
     }
   },
   search: {
@@ -120,9 +124,23 @@ class Navbar extends React.Component {
 
   onChangeHandler = e => {
     this.setState({ keyword: e.target.value }, () => {
+      this.props.dispatch({
+        type:'SHOW_SHIMMER',
+        payload:true
+      })
       setTimeout(() => {
         getNews("", this.state.keyword);
       }, 800);
+      setTimeout(()=>{
+        this.props.dispatch({
+          type:'SHOW_SHIMMER',
+          payload:false
+        })
+        this.props.dispatch({
+          type:'CURRENT_CATEGORY',
+          payload:this.state.keyword
+        })
+      },1000)
     });
   };
 
@@ -155,9 +173,7 @@ class Navbar extends React.Component {
       >
         <MenuItem>
           <IconButton color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <FavouriteIcon />
-            </Badge>
+              <Notifications />
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
@@ -195,7 +211,7 @@ class Navbar extends React.Component {
             <div className="search ml-2 col-lg-6  col-sm-12">
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
-                  <SearchIcon />
+                  <Icon />
                 </div>
                 <InputBase
                   placeholder="Search…"
@@ -211,13 +227,7 @@ class Navbar extends React.Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
-                <Badge
-                  badgeContent={1}
-                  color="secondary"
-                  className={classes.badge}
-                >
-                  <FavouriteIcon />
-                </Badge>
+                  <Notifications />
               </IconButton>
             </div>
           </Toolbar>
@@ -229,4 +239,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default withStyles(styles)(Navbar);
+export default connect()(withStyles(styles)(Navbar));

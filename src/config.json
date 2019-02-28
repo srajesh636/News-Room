@@ -1,5 +1,5 @@
 {
-  "url":"https://newsapi.org/v2/top-headlines?country=in&category=",
+  "url":"https://newsapi.org/v2/top-headlines?country=in&pageSize=100&category=",
   "apiKey":"ee92f1e3efe94cd79d09e8e8a257c668",
   "getByKeywordUrl":"https://newsapi.org/v2/everything?q=",
   "defaultImageUrl":"https://images.pexels.com/photos/751079/pexels-photo-751079.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",

@@ -1,62 +1,60 @@
-import { Button } from "@material-ui/core";
+import { CardContent } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import red from "@material-ui/core/colors/red";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import * as Moment from "moment";
 import React from "react";
 import config from "../config.json";
-import * as Moment from 'moment';
-
 
 const styles = theme => ({
   card: {
+    width:300,
+    height:300,
     maxWidth: 400,
-    minWidth: 130
+    minWidth: 130,
+    minHeight:300,
+    maxHeight:310,
+    marginTop:20,
+    marginBottom:3,
+    textAlign:'left !important',
   },
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "40.25%" ,
+    marginBottom:5
   },
   actions: {
     display: "flex"
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
+  },
+  expandOpen: {
+    transform: "rotate(180deg)"
+  },
+  avatar: {
+    backgroundColor: red[500]
+  },
+  newsTitle: {
+    fontSize: "16px !important"
   }
 });
 
 class ShimmerCard extends React.Component {
-
   render() {
+    let {classes}= this.props;
     return (
-      <Card className={classes.card}>
-      <Image
-          width={380} height={50}
-          style={{objectFit: 'cover'}} // Style your <img>
-          delay={25}
-          duration={0.9} // Customize the animation duration (s).
-        />
-      <br/>
-      <Image
-          width={380} height={200}
-          style={{objectFit: 'cover'}} // Style your <img>
-          delay={25}
-          duration={0.9} // Customize the animation duration (s).
-        />
-        <CardContent>
-          <Typography component="p" className="news-content">
-            {newsContent}
-          </Typography>
-        </CardContent>
-        <Button
-          size="small"
-          color="primary"
-          className="mb-2"
-          href={news.url}
-          target="_blank"
-        >
-          Read More
-        </Button>
+      <Card className={classes.card + " card"}>
+        <div className="box shine"></div>
+        <div className="lines shine mt-4"></div>
+        <div className="lines shine"></div>
+        <div className="lines shine"></div>
       </Card>
     );
   }

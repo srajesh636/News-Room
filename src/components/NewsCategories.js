@@ -1,6 +1,7 @@
 import React from "react";
 import Chip from "@material-ui/core/Chip";
 import getNews from "../helpers/API";
+import {connect} from 'react-redux';
 
 let categories = [
   "Business",
@@ -18,7 +19,21 @@ class NewsCategories extends React.Component {
   }
 
   getCategoryNews = (category) =>{
+    this.props.dispatch({
+      type:'SHOW_SHIMMER',
+      payload:true
+    })
+    this.props.dispatch({
+      type:'CURRENT_CATEGORY',
+      payload:category
+    })
     getNews(category);
+    setTimeout(()=>{
+      this.props.dispatch({
+        type:'SHOW_SHIMMER',
+        payload:false
+      })
+    },1500)
   }
 
   showAllCategory = _ => {
@@ -38,4 +53,4 @@ class NewsCategories extends React.Component {
   }
 }
 
-export default NewsCategories;
+export default connect()(NewsCategories);
